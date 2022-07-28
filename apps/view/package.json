@@ -1,0 +1,67 @@
+{
+  "name": "pulsexliquidity",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": ".",
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/react": "^2.1.2",
+    "@metamask/jazzicon": "^2.0.0",
+    "@mui/x-data-grid": "^5.14.0",
+    "@tanstack/react-table": "^8.4.0",
+    "@tanstack/solid-table": "^8.4.0",
+    "@tanstack/svelte-table": "^8.4.0",
+    "@tanstack/vue-table": "^8.4.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.38",
+    "@types/react": "^18.0.10",
+    "@types/react-dom": "^18.0.5",
+    "@usedapp/core": "^1.0.7",
+    "axios": "^0.27.2",
+    "buffer": "^6.0.3",
+    "jazzicon-ts": "^1.0.2",
+    "keccak": "^3.0.2",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.31",
+    "npm": "^8.12.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^5.3.3",
+    "react-scripts": "5.0.1",
+    "react-table": "^7.8.0",
+    "typescript": "^4.7.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "PORT=8090 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-table": "^7.7.12"
+  }
+}
