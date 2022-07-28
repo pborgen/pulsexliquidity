@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = 'http://localhost:3000/api/v1';
+const baseUrl = 'http://137.184.101.252:5555/api/v1';
 
 const getBaseUrl = () => {
     return baseUrl;
