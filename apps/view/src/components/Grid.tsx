@@ -24,7 +24,6 @@ const Grid = () => {
 
     const updateGrid =
         async () => {
-
             let json = await ApiService.getLiquidityPairs();
 
             const data = json.data;
@@ -33,30 +32,7 @@ const Grid = () => {
 
             setDataAgeInSeconds((currentTime - datalLastUpdate).toLocaleString());
 
-            let updatedArray = [];
-
-            for (var element of data) {
-                element.pairName = element.token0symbol + " / " + element.token1symbol;
-                const linkUrl = "https://app.v2b.testnet.pulsex.com/info/pool/" + element.contractaddressforpair;
-                element.pairName =
-                    <Link href={linkUrl} isExternal color="green" _hover={{
-                        fontWeight: "extrabold"
-                    }
-                    }>
-                        {element.token0symbol + " / " + element.token1symbol}
-                    </Link >
-
-                element.token0balancebigdecimal = parseInt(element.token0balancebigdecimal).toLocaleString() + "(" + element.token0symbol + ")";
-                element.token1balancebigdecimal = parseInt(element.token1balancebigdecimal).toLocaleString() + "(" + element.token1symbol + ")";
-                element.liquityInBaseToken = parseInt(element.liquityInBaseToken.value).toLocaleString();
-
-                element.ratio = "1 " + element.token0symbol + " = " + parseFloat(element.token0overtoken1bigdecimal).toFixed(8) + " " + element.token1symbol;
-
-
-                updatedArray.push(element);
-            }
-            setRowData(updatedArray);
-
+            setRowData(data);
         }
 
     useEffect(() => {
@@ -71,55 +47,65 @@ const Grid = () => {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Pair',
-                accessor: 'pairName',
+                Header: 'Rank',
+                accessor: 'liquidity_rank',
 
                 width: 12,
                 minWidth: 12,
                 maxWidth: 12,
             },
             {
+                Header: 'Pair',
+                accessor: 'pairName',
+
+                width: 12,
+                minWidth: 12,
+                maxWidth: 12,
+                Cell: (props: any) => {
+                    let linkUrl = '';
+                    if (props.row !== undefined) {
+                        linkUrl = "https://app.v2b.testnet.pulsex.com/info/pool/" + props.row.original.contractaddressforpair;
+                    }
+
+
+                    return <Link href={linkUrl} isExternal color="green" _hover={{
+                        fontWeight: "extrabold"
+                    }
+                    }>
+                        {props.value}
+                    </Link >
+
+                },
+            },
+            {
                 Header: 'Liquidity(PLS)',
-                accessor: 'liquityInBaseToken',
+                accessor: 'liquityInBaseTokenDisplay',
                 width: 10,
                 minWidth: 10,
                 maxWidth: 12,
             },
             {
                 Header: 'Quantity',
-                accessor: 'token0balancebigdecimal',
+                accessor: 'token0balancebigDisplay',
                 width: 10,
                 minWidth: 10,
                 maxWidth: 12,
             },
             {
                 Header: 'Quantity',
-                accessor: 'token1balancebigdecimal',
+                accessor: 'token1balancebigDisplay',
                 width: 10,
                 minWidth: 10,
                 maxWidth: 12,
             },
             // {
-            //     Header: 'token1balancebigdecimal',
-            //     accessor: 'token1balancebigdecimal',
-
+            //     Header: 'Ratio',
+            //     accessor: 'ratioDisplay',
+            //     width: 10,
+            //     minWidth: 10,
+            //     maxWidth: 12,
+            //     isSorted: false,
             // },
-            // {
-            //     Header: 'token0overtoken1bigdecimal',
-            //     accessor: 'token0overtoken1bigdecimal',
-
-            // },
-            {
-                Header: 'Ratio',
-                accessor: 'ratio',
-                width: 10,
-                minWidth: 10,
-                maxWidth: 12,
-            },
-
-
-
-
         ],
         [],
     )

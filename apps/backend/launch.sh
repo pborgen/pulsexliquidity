@@ -1,0 +1,1 @@
+NODE_TLS_REJECT_UNAUTHORIZED=0 /root/.nvm/versions/node/v16.13.2/bin/node /root/dev/code/pulsexliquidity/apps/backend/dist/main.js >> /root/dev/code/logs/pulseXLiquidity-webserver.log
